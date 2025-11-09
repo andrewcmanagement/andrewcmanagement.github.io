@@ -1,170 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Andrew C Management</title>
-<style>
-  /* Reset */
-  * {margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;}
-  body {line-height:1.6; background:#f9f9f9; color:#333;}
-  a {text-decoration:none; color:inherit;}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Andrew C Management — Property Management in San Francisco</title>
+  <meta name="description" content="Andrew C Management provides residential property management, consulting, and property care & maintenance across San Francisco." />
+  <style>
+    /* ===== Design Tokens ===== */
+    :root{
+      --bg: #0b0e13;               /* page background */
+      --panel: #11151c;            /* card surface */
+      --panel-2:#0e1218;           /* alt surface */
+      --text: #e8ecf3;             /* primary text */
+      --muted:#aeb7c6;             /* secondary text */
+      --brand:#4BA3FF;             /* primary accent */
+      --brand-2:#7CD3A3;           /* secondary accent */
+      --line:#222935;              /* subtle borders */
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --maxw: 1100px;
+    }
 
-  /* Header */
-  header {
-    background:#fff;
-    border-bottom:1px solid #e0e0e0;
-    padding:20px 50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:100;
-  }
-  .logo {display:flex; align-items:center; font-weight:bold; font-size:1.8rem; color:#1f1f1f;}
-  .logo img {height:40px; width:auto; margin-right:12px;}
-  nav a {margin-left:25px; font-weight:500; transition:color 0.3s;}
-  nav a:hover {color:#f4b41a;}
+    /* ===== Global ===== */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:
+        linear-gradient(180deg, rgba(3,7,18,.96), rgba(3,7,18,.98)),
+        url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+    .eyebrow{letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-size:.82rem}
+    h1,h2,h3{margin:0 0 .6rem}
+    p{margin:0 0 1rem; color:var(--muted)}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.1rem; border-radius:12px; background:var(--brand); color:#061223; font-weight:600; transition:transform .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(75,163,255,.25)}
 
-  /* Sections */
-  section {padding:80px 20px; max-width:1000px; margin:auto; position:relative;}
-  h2 {font-size:2rem; text-align:center; margin-bottom:20px;}
-  p {max-width:800px; margin:0 auto 20px; text-align:center;}
+    /* ===== Header ===== */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, black 15%);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:36px; height:36px; border-radius:10px; border:1.5px solid var(--brand); background:transparent; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--brand); box-shadow:none}
+    .logo svg{width:22px; height:22px; color:#08111e}
+    .brand h1{font-size:1.05rem; letter-spacing:.02em}
+    nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
+    nav a{padding:10px 12px; border-radius:10px; color:var(--muted)}
+    nav a:hover{background:var(--panel); color:var(--text)}
 
-  /* Home Section (full-bleed) */
-  #home {
-    position:relative;
-    background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1950&q=80');
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-    color:#fff;
-    padding:200px 20px;
-    text-align:center;
-  }
-  #home::before {
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(31,31,31,0.5);
-    z-index:0;
-  }
-  #home > * {position:relative; z-index:1;}
+    /* ===== Hero ===== */
+    .hero{
+      position:relative; isolation:isolate; overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background-image:
+        linear-gradient(180deg, rgba(3,7,18,.88), rgba(3,7,18,.96)),
+        url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
+    .hero-inner{display:block; padding:40px 0 56px}
+    .hero-card{
+      background:linear-gradient(135deg, color-mix(in oklab, var(--panel) 92%, black 8%), var(--panel-2));
+      border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px
+    }
+    .hero h2{font-size:2.1rem}
+    .checklist{display:grid; gap:.55rem; margin:.8rem 0 1.25rem}
+    .checklist li{list-style:none; display:flex; align-items:flex-start; gap:.6rem; color:var(--muted)}
+    .checklist svg{flex:0 0 18px; margin-top:.2rem}
+    .hero-aside{
+      min-height:300px; border-radius:var(--radius);
+      border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)), url('https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      box-shadow:var(--shadow);
+    }
 
-  /* Services Section */
-  .services {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:40px;
-    margin-top:40px;
-  }
-  .service-item {
-    flex:1 1 250px;
-    min-height:250px;
-    position:relative;
-    border-radius:10px;
-    overflow:hidden;
-    color:#fff;
-    text-align:center;
-    padding:50px 20px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-    background-size:cover;
-    background-position:center;
-  }
-  .service-item::before {
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(31,31,31,0.5);
-    z-index:0;
-  }
-  .service-item > * {position:relative; z-index:1;}
-  .service-item:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+    /* ===== Sections ===== */
+    section{padding:48px 0; border-bottom:1px solid var(--line)}
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:28px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+      border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)
+    }
 
-  /* Contact Form */
-  form {display:flex; flex-direction:column; max-width:500px; margin:auto;}
-  input, textarea {padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; font-size:1rem;}
-  button {padding:12px; border:none; border-radius:5px; background:#1f1f1f; color:#fff; font-size:1rem; cursor:pointer; transition:background 0.3s;}
-  button:hover {background:#f4b41a; color:#1f1f1f;}
+    /* Services Grid */
+    .services{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .service{
+      position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--line); background:var(--panel);
+      min-height:220px; display:flex; flex-direction:column; justify-content:flex-end
+    }
+    .service::before{content:""; position:absolute; inset:0; opacity:.35; background-size:cover; background-position:center; filter:saturate(1) contrast(1.05)}
+    .service.residential::before{background-image:url('https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop')}
+    .service.consulting::before{background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop')}
+    .service.care::before{background-image:url('https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?q=80&w=1600&auto=format&fit=crop')}
+    .service > div{position:relative; z-index:1; padding:18px; background:linear-gradient(180deg, transparent, rgba(8,14,24,.75)); border-top:1px solid rgba(255,255,255,.06)}
+    .service h3{margin:0 0 .35rem}
 
-  /* Footer */
-  footer {background:#1f1f1f; color:#fff; text-align:center; padding:20px;}
+    /* Contact */
+    form{display:grid; gap:12px}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:var(--panel); color:var(--text)
+    }
+    textarea{min-height:120px; resize:vertical}
+    .note{font-size:.9rem; color:var(--muted)}
 
-  /* Responsive */
-  @media(max-width:768px){
-    .services {flex-direction:column; gap:20px;}
-    header {flex-direction:column; text-align:center;}
-    nav {margin-top:10px;}
-  }
-</style>
+    /* Footer */
+    footer{padding:30px 0; color:var(--muted)}
+
+    /* ===== Responsive ===== */
+    @media (max-width: 960px){
+      .hero-inner{grid-template-columns:1fr;}
+      .split{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr;}
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- ===== Header ===== -->
   <header>
-    <div class="logo">
-      <img src="https://via.placeholder.com/40x40.png?text=AC" alt="Logo">
-      Andrew C Management
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Andrew C Management home">
+        <span class="logo" aria-hidden="true">AC</span>
+        <h1>Andrew C Management</h1>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <!-- Home Section -->
-  <section id="home">
-    <h2>Professional Property Management in San Francisco</h2>
-    <p>We specialize in residential property management, consulting, and property care to make your investments stress-free and profitable.</p>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Andrew C Management is dedicated to providing top-tier property management services in San Francisco. We take care of your properties like they are our own, ensuring maximum value and peace of mind for our clients.</p>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service-item" style="background-image:url('https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=800&q=80');">
-        <h3>Residential Management</h3>
-        <p>Comprehensive property oversight, tenant management, and maintenance coordination to protect your investment.</p>
-      </div>
-      <div class="service-item" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80');">
-        <h3>Consulting</h3>
-        <p>Expert guidance on property optimization, rental strategies, and market analysis to maximize returns.</p>
-      </div>
-      <div class="service-item" style="background-image:url('https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&w=800&q=80');">
-        <h3>Property Care & Maintenance</h3>
-        <p>Reliable property care services including repairs, inspections, and preventative maintenance to keep your properties in top shape.</p>
+  <!-- ===== Hero / Home ===== -->
+  <section id="home" class="hero" aria-labelledby="home-title">
+    <div class="container hero-inner">
+      <div class="hero-card">
+        <div class="eyebrow">San Francisco • Residential Specialists</div>
+        <h2 id="home-title">Professional Property Management for Peace of Mind</h2>
+        <p>Trusted, detail‑oriented care for homes, multi‑unit buildings, and condos across San Francisco — with responsive communication and a modern, transparent approach.</p>
+        <ul class="checklist" role="list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Leasing, tenant screening & relations
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Preventative maintenance & vendor coordination
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Financial reporting & compliance guidance
+          </li>
+        </ul>
+        <a class="btn" href="#contact">Request a consult
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <!-- ===== About ===== -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="container split">
+      <div class="card">
+        <div class="eyebrow">About Us</div>
+        <h2 id="about-title">Local, attentive, and owner‑minded</h2>
+        <p>Andrew C Management is a San Francisco‑based property management firm focused on residential buildings. We blend hands‑on attention with modern tools to maximize asset value and provide an excellent resident experience.</p>
+        <p>From Pacific Heights to the Outer Sunset, we understand the nuances of SF neighborhoods, rent ordinances, and vendor networks — so your property is cared for the right way.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Why Choose Us</div>
+        <h3>Transparent. Proactive. Reliable.</h3>
+        <p>Owners partner with us for our clear communication and proactive maintenance philosophy. Residents appreciate our friendly, responsive support. We believe in long‑term relationships and meticulous property stewardship.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== Services ===== -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="eyebrow">Services</div>
+      <h2 id="services-title">What we do</h2>
+      <p>Comprehensive solutions tailored to your property and goals.</p>
+      <div class="services" role="list">
+        <article class="service residential" role="listitem" aria-labelledby="svc1-title">
+          <div>
+            <h3 id="svc1-title">Residential Property Management</h3>
+            <p>Leasing, tenant screening, rent collection, inspections, and day‑to‑day operations — handled with care.</p>
+          </div>
+        </article>
+        <article class="service consulting" role="listitem" aria-labelledby="svc2-title">
+          <div>
+            <h3 id="svc2-title">Consulting</h3>
+            <p>Make data‑informed decisions on renovations, repositioning, pricing, and compliance in the SF market.</p>
+          </div>
+        </article>
+        <article class="service care" role="listitem" aria-labelledby="svc3-title">
+          <div>
+            <h3 id="svc3-title">Property Care & Maintenance</h3>
+            <p>Preventative plans, vendor coordination, emergency response, capital project oversight, and reporting.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container split">
+      <div class="card">
+        <div class="eyebrow">Contact</div>
+        <h2 id="contact-title">Let’s talk about your property</h2>
+        <p>Tell us about your building and goals. We’ll follow up to schedule a brief consultation.</p>
+        <form name="contact" method="post" action="#" onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch shortly.');">
+          <label>
+            <span class="eyebrow" style="display:block; margin-bottom:6px">Name</span>
+            <input type="text" name="name" placeholder="Your full name" required>
+          </label>
+          <label>
+            <span class="eyebrow" style="display:block; margin-bottom:6px">Email</span>
+            <input type="email" name="email" placeholder="name@example.com" required>
+          </label>
+          <label>
+            <span class="eyebrow" style="display:block; margin-bottom:6px">Message</span>
+            <textarea name="message" placeholder="Property address, units, and how we can help" required></textarea>
+          </label>
+          <button class="btn" type="submit">Send message</button>
+          <div class="note">Prefer email? Reach us at <a href="mailto:hello@andrewcmanagement.com">hello@andrewcmanagement.com</a></div>
+        </form>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Service Area</div>
+        <h3>Based in San Francisco</h3>
+        <p>We manage properties across the city, with experience in neighborhoods including Pacific Heights, Noe Valley, Inner/Outer Sunset, Richmond, and SoMa.</p>
+        <p><strong>Hours:</strong> Mon–Fri, 9am–5pm PT<br><strong>Phone:</strong> (415) 555‑0131</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 Andrew C Management | San Francisco, CA
+    <div class="container">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:space-between">
+        <div style="display:flex; align-items:center; gap:10px">
+          <span class="logo" aria-hidden="true">AC</span>
+          <span>© <span id="year"></span> Andrew C Management</span>
+        </div>
+        <div style="font-size:.9rem; color:var(--muted)">Residential Property Management • Consulting • Property Care & Maintenance</div>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
