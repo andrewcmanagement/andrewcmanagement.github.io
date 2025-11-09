@@ -24,33 +24,12 @@
             color: inherit;
         }
 
-        /* Header with background image and parallax */
+        /* Header (no background image) */
         header {
-            background-image: url('https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            background-color: #1f1f1f;
             color: #fff;
-            padding: 100px 20px;
+            padding: 40px 20px;
             text-align: center;
-            position: relative;
-        }
-
-        /* Overlay for readability */
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(31, 31, 31, 0.5);
-            z-index: 0;
-        }
-
-        header > * {
-            position: relative;
-            z-index: 1;
         }
 
         /* Logo */
@@ -76,6 +55,7 @@
             padding: 80px 20px;
             max-width: 1000px;
             margin: auto;
+            position: relative;
         }
 
         h2 {
@@ -91,6 +71,33 @@
             text-align: center;
         }
 
+        /* Home Section with background image and parallax */
+        #home {
+            background-image: url('https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            padding: 120px 20px;
+        }
+
+        #home::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(31, 31, 31, 0.5);
+            z-index: 0;
+        }
+
+        #home > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Section */
         .services {
             display: flex;
             flex-wrap: wrap;
@@ -100,13 +107,35 @@
         }
 
         .service-item {
-            background-color: #fff;
-            padding: 30px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             flex: 1 1 250px;
             text-align: center;
+            color: #fff;
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        /* Overlay for service cards */
+        .service-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(31,31,31,0.5);
+            border-radius: 10px;
+            z-index: 0;
+        }
+
+        .service-item > * {
+            position: relative;
+            z-index: 1;
         }
 
         .service-item:hover {
@@ -193,15 +222,15 @@
     <section id="services">
         <h2>Our Services</h2>
         <div class="services">
-            <div class="service-item">
+            <div class="service-item" style="background-image: url('https://images.unsplash.com/photo-1560184897-6c9c216d8a3b?auto=format&fit=crop&w=800&q=80');">
                 <h3>Residential Management</h3>
                 <p>Comprehensive property oversight, tenant management, and maintenance coordination to protect your investment.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80');">
                 <h3>Consulting</h3>
                 <p>Expert guidance on property optimization, rental strategies, and market analysis to maximize returns.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item" style="background-image: url('https://images.unsplash.com/photo-1560448204-38463b5f836e?auto=format&fit=crop&w=800&q=80');">
                 <h3>Property Care & Maintenance</h3>
                 <p>Reliable property care services including repairs, inspections, and preventative maintenance to keep your properties in top shape.</p>
             </div>
