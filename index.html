@@ -1,206 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF‑8">
-  <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
-  <title>Andrew C Management</title>
-  <style>
-    /* Reset & base */
-    * {
-      margin:0;
-      padding:0;
-      box‑sizing:border‑box;
-      font‑family:'Helvetica Neue', Helvetica, Arial, sans‑serif;
-    }
-    body {
-      color:#333;
-      background:#f9f9f9;
-      line‑height:1.6;
-    }
-    a {
-      text‑decoration:none;
-      color:inherit;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrew C Management</title>
+<style>
+  /* Reset */
+  * {margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;}
+  body {line-height:1.6; background:#f9f9f9; color:#333;}
+  a {text-decoration:none; color:inherit;}
 
-    /* Header – minimal, professional */
-    header {
-      background:#fff;
-      color:#1f1f1f;
-      display:flex;
-      justify‑content:space‑between;
-      align‑items:center;
-      padding:20px 50px;
-      border‑bottom:1px solid #e0e0e0;
-      position:sticky;
-      top:0;
-      z‑index:100;
-    }
-    .logo {
-      font‑weight:bold;
-      font‑size:1.8rem;
-      letter‑spacing:1px;
-      color:#1f1f1f;
-      display:flex;
-      align‑items:center;
-    }
-    .logo img {
-      height:40px;
-      width:auto;
-      margin‑right:12px;
-    }
-    nav a {
-      margin‑left:25px;
-      color:#1f1f1f;
-      font‑weight:500;
-      transition:color 0.3s;
-    }
-    nav a:hover {
-      color:#f4b41a;
-    }
+  /* Header */
+  header {
+    background:#fff;
+    border-bottom:1px solid #e0e0e0;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .logo {display:flex; align-items:center; font-weight:bold; font-size:1.8rem; color:#1f1f1f;}
+  .logo img {height:40px; width:auto; margin-right:12px;}
+  nav a {margin-left:25px; font-weight:500; transition:color 0.3s;}
+  nav a:hover {color:#f4b41a;}
 
-    section {
-      padding:80px 20px;
-      max‑width:1000px;
-      margin:auto;
-      position:relative;
-    }
-    h2 {
-      font‑size:2rem;
-      margin‑bottom:20px;
-      text‑align:center;
-      color:#1f1f1f;
-    }
-    p {
-      max‑width:800px;
-      margin:0 auto 20px auto;
-      text‑align:center;
-    }
+  /* Sections */
+  section {padding:80px 20px; max-width:1000px; margin:auto; position:relative;}
+  h2 {font-size:2rem; text-align:center; margin-bottom:20px;}
+  p {max-width:800px; margin:0 auto 20px; text-align:center;}
 
-    /* Hero Section – full‑bleed background */
-    #home {
-      margin:0;
-      padding:200px 20px;
-      background‑image:url('https://images.unsplash.com/photo‑1570129477492‑45c003edd2be?auto=format&fit=crop&w=1950&q=80');
-      background‑size:cover;
-      background‑position:center;
-      background‑attachment:fixed;
-      color:#fff;
-      text‑align:center;
-    }
-    #home::before {
-      content:"";
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      background:rgba(31,31,31,0.5);
-      z‑index:0;
-    }
-    #home > * {
-      position:relative;
-      z‑index:1;
-    }
+  /* Home Section (full-bleed) */
+  #home {
+    position:relative;
+    background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1950&q=80');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:#fff;
+    padding:200px 20px;
+    text-align:center;
+  }
+  #home::before {
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(31,31,31,0.5);
+    z-index:0;
+  }
+  #home > * {position:relative; z-index:1;}
 
-    /* Services Section */
-    .services {
-      display:flex;
-      flex‑wrap:wrap;
-      justify‑content:center;
-      gap:40px;
-      margin‑top:40px;
-    }
-    .service‑item {
-      background‑size:cover;
-      background‑position:center;
-      background‑repeat:no‑repeat;
-      padding:50px 30px;
-      border‑radius:10px;
-      box‑shadow:0 4px 10px rgba(0,0,0,0.05);
-      flex:1 1 250px;
-      text‑align:center;
-      color:#fff;
-      transition:transform 0.3s,box‑shadow 0.3s;
-      position:relative;
-      min‑height:250px;
-    }
-    .service‑item::before {
-      content:"";
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      background:rgba(31,31,31,0.5);
-      border‑radius:10px;
-      z‑index:0;
-    }
-    .service‑item > * {
-      position:relative;
-      z‑index:1;
-    }
-    .service‑item:hover {
-      transform:translateY(-5px);
-      box‑shadow:0 8px 20px rgba(0,0,0,0.1);
-    }
+  /* Services Section */
+  .services {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+    margin-top:40px;
+  }
+  .service-item {
+    flex:1 1 250px;
+    min-height:250px;
+    position:relative;
+    border-radius:10px;
+    overflow:hidden;
+    color:#fff;
+    text-align:center;
+    padding:50px 20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-size:cover;
+    background-position:center;
+  }
+  .service-item::before {
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(31,31,31,0.5);
+    z-index:0;
+  }
+  .service-item > * {position:relative; z-index:1;}
+  .service-item:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1);}
 
-    form {
-      display:flex;
-      flex‑direction:column;
-      max‑width:500px;
-      margin:auto;
-    }
-    input, textarea {
-      padding:10px;
-      margin‑bottom:15px;
-      border‑radius:5px;
-      border:1px solid #ccc;
-      font‑size:1rem;
-    }
-    button {
-      background:#1f1f1f;
-      color:#fff;
-      padding:12px;
-      border:none;
-      border‑radius:5px;
-      font‑size:1rem;
-      cursor:pointer;
-      transition:background 0.3s;
-    }
-    button:hover {
-      background:#f4b41a;
-      color:#1f1f1f;
-    }
+  /* Contact Form */
+  form {display:flex; flex-direction:column; max-width:500px; margin:auto;}
+  input, textarea {padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; font-size:1rem;}
+  button {padding:12px; border:none; border-radius:5px; background:#1f1f1f; color:#fff; font-size:1rem; cursor:pointer; transition:background 0.3s;}
+  button:hover {background:#f4b41a; color:#1f1f1f;}
 
-    footer {
-      background:#1f1f1f;
-      color:#fff;
-      text‑align:center;
-      padding:20px;
-    }
+  /* Footer */
+  footer {background:#1f1f1f; color:#fff; text-align:center; padding:20px;}
 
-    html {
-      scroll‑behavior:smooth;
-    }
-
-    @media(max‑width:768px) {
-      .services {
-        flex‑direction:column;
-        gap:20px;
-      }
-      header {
-        flex‑direction:column;
-        text‑align:center;
-      }
-      nav {
-        margin‑top:10px;
-      }
-    }
-  </style>
+  /* Responsive */
+  @media(max-width:768px){
+    .services {flex-direction:column; gap:20px;}
+    header {flex-direction:column; text-align:center;}
+    nav {margin-top:10px;}
+  }
+</style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/40x40.png?text=AC" alt="Andrew C Management Logo">
-      Andrew C Management
+      <img src="https://via.placeholder.com/40x40.png?text=AC" alt="Logo">
+      Andrew C Management
     </div>
     <nav>
       <a href="#home">Home</a>
@@ -213,29 +122,29 @@
   <!-- Home Section -->
   <section id="home">
     <h2>Professional Property Management in San Francisco</h2>
-    <p>We specialize in residential property management, consulting, and property care to make your investments stress‑free and profitable.</p>
+    <p>We specialize in residential property management, consulting, and property care to make your investments stress-free and profitable.</p>
   </section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About Us</h2>
-    <p>Andrew C Management is dedicated to providing top‑tier property management services in San Francisco. With years of experience, we take care of your properties like they are our own, ensuring maximum value and peace of mind for our clients.</p>
+    <p>Andrew C Management is dedicated to providing top-tier property management services in San Francisco. We take care of your properties like they are our own, ensuring maximum value and peace of mind for our clients.</p>
   </section>
 
   <!-- Services Section -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="services">
-      <div class="service‑item" style="background‑image:url('https://images.unsplash.com/photo‑1502672023488‑70e25813eb80?auto=format&fit=crop&w=800&q=80');">
+      <div class="service-item" style="background-image:url('https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=800&q=80');">
         <h3>Residential Management</h3>
         <p>Comprehensive property oversight, tenant management, and maintenance coordination to protect your investment.</p>
       </div>
-      <div class="service‑item" style="background‑image:url('https://images.unsplash.com/photo‑1580587771525‑78b9dba3b914?auto=format&fit=crop&w=800&q=80');">
+      <div class="service-item" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80');">
         <h3>Consulting</h3>
         <p>Expert guidance on property optimization, rental strategies, and market analysis to maximize returns.</p>
       </div>
-      <div class="service‑item" style="background‑image:url('https://images.unsplash.com/photo‑1599423300746‑b62533397364?auto=format&fit=crop&w=800&q=80');">
-        <h3>Property Care & Maintenance</h3>
+      <div class="service-item" style="background-image:url('https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&w=800&q=80');">
+        <h3>Property Care & Maintenance</h3>
         <p>Reliable property care services including repairs, inspections, and preventative maintenance to keep your properties in top shape.</p>
       </div>
     </div>
@@ -254,7 +163,7 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Andrew C Management | San Francisco, CA
+    &copy; 2025 Andrew C Management | San Francisco, CA
   </footer>
 
 </body>
