@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Property Management Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97cc04 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97cc04 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2c5f2d;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #2c5f2d;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(44,95,45,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97cc04 100%);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+
+        .why-choose {
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            color: #2c5f2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #2c5f2d 0%, #97cc04 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            font-size: 2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5f2d;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: #2c5f2d;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            background: #1f4521;
+        }
+
+        footer {
+            background: #1f4521;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🏡 PropertyCare Pro</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#why">Why Choose Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Professional Property Management You Can Trust</h1>
+        <p>Personalized care for your property with dedicated, hands-on service</p>
+        <a href="#contact" class="cta-button">Get in Touch</a>
+    </section>
+
+    <section id="services">
+        <h2>Services I Offer</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔑</div>
+                <h3>Tenant Management</h3>
+                <p>Complete tenant screening, lease agreements, rent collection, and addressing tenant concerns with professionalism and efficiency.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Maintenance Coordination</h3>
+                <p>Regular property inspections, coordinating repairs, managing contractors, and ensuring your property stays in excellent condition.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Property Inspections</h3>
+                <p>Thorough routine inspections with detailed reports, ensuring compliance with regulations and identifying issues before they become problems.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Financial Management</h3>
+                <p>Accurate rent collection, expense tracking, detailed monthly statements, and transparent financial reporting for your investment.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📞</div>
+                <h3>24/7 Emergency Response</h3>
+                <p>Available around the clock to handle urgent property issues, protecting your investment and keeping tenants satisfied.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏡</div>
+                <h3>Property Monitoring & Upkeep</h3>
+                <p>Regular property visits, lawn care coordination, seasonal maintenance, and ensuring your property looks its best year-round.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Your Property Deserves Personal Attention</h3>
+                <p>Hi, I'm a dedicated property management professional with over 10 years of experience caring for residential and commercial properties. Unlike large management companies, I provide personalized, hands-on service where you work directly with me—no middlemen, no confusion.</p>
+                <p>I understand that your property is a significant investment, and it deserves meticulous care. My approach combines industry expertise with genuine commitment to protecting and maximizing the value of your property.</p>
+                <p>Whether you own a single rental unit or multiple properties, I treat each one with the same level of attention and professionalism. I'm locally based, quickly responsive, and passionate about what I do.</p>
+            </div>
+            <div class="about-image">
+                🏠
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="why-choose">
+        <h2>Why Choose Personal Property Management?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">👤</div>
+                <h3>Direct Communication</h3>
+                <p>You always work with me directly—no call centers or account managers</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">⚡</div>
+                <h3>Quick Response</h3>
+                <p>Fast decision-making and immediate action on property issues</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">💎</div>
+                <h3>Quality Over Quantity</h3>
+                <p>I focus on a select number of properties to ensure exceptional service</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🤝</div>
+                <h3>Personal Relationships</h3>
+                <p>Building lasting relationships with property owners and tenants</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Let's Talk About Your Property</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        (555) 123-4567
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        info@propertycarepro.com
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div>
+                        <strong>Service Area</strong><br>
+                        Greater Metropolitan Area
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">How can I help?</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 PropertyCare Pro. All rights reserved.</p>
+        <p>Professional property management with a personal touch</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out! I will get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
